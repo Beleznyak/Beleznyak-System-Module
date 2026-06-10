@@ -1,0 +1,36 @@
+openapi: 3.0.0
+info:
+  title: API Мобильного приложения аналитики
+  version: 1.0.0
+paths:
+  /documents:
+    get:
+      summary: Получение списка документов для главного экрана
+      responses:
+        '200':
+          description: Успешная загрузка списка документов
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id: { type: integer }
+                    title: { type: string }
+                    date: { type: string }
+                    author: { type: string }
+
+  /feedback:
+    post:
+      summary: Отправка фидбека через форму обратной связи
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              type: string
+              example: "Прекрасное приложение!\nОднако хотелось бы видеть больше графиков на главном экране.\nСпасибо!"
+      responses:
+        '200':
+          description: Отзыв успешно отправлен
